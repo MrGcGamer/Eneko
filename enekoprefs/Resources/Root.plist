@@ -4,20 +4,21 @@
 <dict>
 	<key>items</key>
 	<array>
-	
 		<dict>
 			<key>cellClass</key>
-			<string>DuoTwitterCell</string>
+			<string>GcDuoTwitterCell</string>
 			<key>firstLabel</key>
 			<string>🌸 Litten</string>
 			<key>firstAccount</key>
 			<string>schneelittchen</string>
+			<key>firstURL</key>
+			<string>https://litten.love/assets/preferences/litten.png</string>
 			<key>secondLabel</key>
 			<string>taki</string>
 			<key>secondAccount</key>
 			<string>74k1_</string>
-			<key>height</key>
-			<real>57</real>
+			<key>secondURL</key>
+			<string>https://litten.love/assets/preferences/taki.png</string>
 		</dict>
 
 		<dict>
@@ -632,7 +633,6 @@
 			<key>url</key>
 			<string>https://repo.litten.love/depictions/Heartlines/</string>
 		</dict>
-
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
@@ -671,10 +671,9 @@
 			<key>url</key>
 			<string>https://paypal.me/Litteeen</string>
 		</dict>
-
 		<dict>
 			<key>cell</key>
-			<key>PSGroupCell</key>
+			<string>PSGroupCell</string>
 			<key>footerText</key>
 			<string>loving with the sky</string>
 			<key>isStaticText</key>
@@ -682,7 +681,6 @@
 			<key>footerAlignment</key>
 			<real>1</real>
 		</dict>
-
 	</array>
 	<key>title</key>
 	<string>Eneko</string>

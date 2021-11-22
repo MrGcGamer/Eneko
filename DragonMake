@@ -1,0 +1,55 @@
+package: love.litten.eneko
+name: Eneko 🎬
+depends: mobilesubstrate, preferenceloader, ws.hbang.common (>= 1.14), firmware (>= 13.0), com.mrgcgamer.libgcuniversal
+version: 1.1.2
+architecture: iphoneos-arm
+description: Set a video as your wallpaper
+author: Litten
+section: Tweaks
+depiction: https://repo.litten.love/depictions/Eneko/index.html
+sldepiction: https://repo.litten.love/depictions/Eneko/index.json
+icon: https://repo.litten.love/depictions/Eneko/assets/icon.png
+
+icmd: "sbreload"
+
+all:
+  targetvers: 13.0
+  archs:
+    - arm64
+    # - arm64e
+  optim: "3"
+  cflags: "-flto"
+
+Eneko:
+  type: tweak
+  frameworks:
+    - UIKit
+    - Cephei
+  libs:
+    - gcuniversal
+    - symbolize
+  filter:
+    executables:
+      - SpringBoard
+  include:
+    - Tweak
+  files:
+    - Tweak/Eneko.x
+
+EnekoPrefs:
+  type: prefs
+  dir: enekoprefs
+  frameworks:
+    - UIKit
+    - Preferences
+    - Cephei
+    - CepheiPrefs
+  libs:
+    - gcuniversal
+  files:
+    - "*.m"
+
+Strip:
+  type: stage
+  stage:
+    - tweakStrip.sh
