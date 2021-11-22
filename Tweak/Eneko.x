@@ -3,6 +3,7 @@
 #define isLockscreenVisible [[objc_getClass("SBCoverSheetPresentationManager") sharedInstance] isVisible]
 #define isControlCenterVisible [[objc_getClass("SBControlCenterController") sharedInstance] isVisible]
 #define isInCall [[objc_getClass("SBTelephonyManager") sharedTelephonyManager] inCall]
+#define hasTrack [[objc_getClass("SBMediaController") sharedInstance] hasTrack]
 
 %group Main
 
@@ -243,8 +244,15 @@
 
         [backgroundView addObserver:self forKeyPath:@"weighting" options:NSKeyValueObservingOptionNew context:NULL];
 
-        if (playerCC && enableControlCenterWallpaperSwitch)
-            playerCC.rate = 1;
+        if (playerCC && enableControlCenterWallpaperSwitch) {
+            if (hasTrack && disableForCMC) {
+                playerCC.rate = 0;
+                playerLayerCC.hidden = YES;
+            } else {
+                playerLayerCC.hidden = NO;
+                playerCC.rate = 1;
+            }
+        }
 
     }
 
@@ -488,6 +496,8 @@
     preferences = [[HBPreferences alloc] initWithIdentifier:@"love.litten.enekopreferences"];
 
     if (![preferences boolForKey:@"Enabled" default:NO]) return;
+
+    disableForCMC = [[[HBPreferences alloc] initWithIdentifier:@"com.mrgcgamer.colourusprefs"] boolForKey:@"CCMusicOverride" default:YES];
 
     // lockscreen
     [preferences registerBool:&enableLockscreenWallpaperSwitch default:NO forKey:@"enableLockscreenWallpaper"];

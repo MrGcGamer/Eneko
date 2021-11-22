@@ -7,6 +7,8 @@
 
 HBPreferences* preferences = nil;
 
+BOOL disableForCMC = NO;
+
 BOOL screenIsOn = YES;
 BOOL isOnLowPower = NO;
 BOOL supportsLowPowerMode = NO;
@@ -101,4 +103,9 @@ BOOL hideWhenLowPowerSwitch = YES;
 @interface SBTelephonyManager : NSObject
 +(id)sharedTelephonyManager;
 -(BOOL)inCall;
+@end
+
+@interface SBMediaController : NSObject
++(id)sharedInstance;
+-(BOOL)hasTrack;
 @end
