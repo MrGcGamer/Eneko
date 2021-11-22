@@ -149,7 +149,7 @@
 
     %hook CSCoverSheetView
     - (void)_layoutWallpaperEffectView {
-        NO;
+        if (!enableLockscreenWallpaperSwitch) %orig;
     }
     %end
 
